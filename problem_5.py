@@ -36,5 +36,10 @@ class Trie:
 
     # Find the Trie node that represents this prefix
     def find(self, prefix):
-        pass
+        node = self.root
+        for char in prefix:
+            if char not in node.children:
+                return None
+            node = node.children[char]
+        return node
 
