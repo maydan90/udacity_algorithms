@@ -3,9 +3,9 @@ from collections import defaultdict
 
 # A RouteTrie will store our routes and their associated handlers
 class RouteTrie:
-    def __init__(self):
+    def __init__(self, root_handler):
         # Initialize the trie with an root node and a handler, this is the root path or home page node
-        pass
+        self.root = RouteTrieNode(root_handler)
 
     def insert(self):
         # Similar to our previous example you will want to recursively add nodes
@@ -25,17 +25,18 @@ class RouteTrieNode:
         self.children = defaultdict(RouteTrieNode)
         self.handler = handler
 
-    def insert(self):
+    def insert(self, handler):
         # Insert the node as before
-        pass
+        return self.children[handler]
 
 
 # The Router class will wrap the Trie and handle
 class Router:
-    def __init__(self):
+    def __init__(self, root_handler='root handler', not_found_handler='not found handler'):
         # Create a new RouteTrie for holding our routes
         # You could also add a handler for 404 page not found responses as well!
-        pass
+        self.root = RouteTrie(root_handler)
+        self.not_found_handler = not_found_handler
 
     def add_handler(self):
         # Add a handler for a path
