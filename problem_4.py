@@ -8,15 +8,11 @@ def sort_012(input_list):
     # trivial cases of empty array or one element array
     if not input_list or len(input_list) == 1:
         return input_list
-    zeros_count = 0
-    twos_count = 0
-    for element in input_list:
-        if element == 0:
-            zeros_count += 1
-        if element == 2:
-            twos_count += 1
-    ones_count = len(input_list) - zeros_count - twos_count
-    return [0 for _ in range(zeros_count)] + [1 for _ in range(ones_count)] + [2 for _ in range(twos_count)]
+    last_zero_idx = 0
+    first_two_idx = len(input_list) - 1
+    current_idx = 0
+    while True:
+        pass
 
 
 def test_function(test_case):
