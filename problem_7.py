@@ -45,7 +45,7 @@ class RouteTrie:
 
 # The Router class will wrap the Trie and handle
 class Router:
-    def __init__(self, root_handler='root handler', not_found_handler='not found handler'):
+    def __init__(self, root_handler, not_found_handler):
         # Create a new RouteTrie for holding our routes
         # You could also add a handler for 404 page not found responses as well!
         self.routes = RouteTrie(root_handler)

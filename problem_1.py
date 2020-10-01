@@ -7,7 +7,8 @@ def sqrt(number):
     Returns:
        int: Floored Square Root
     """
-    assert type(number) is int and number >= 0
+    if type(number) is not int or number < 0:
+        return None
 
     if number == 0 or number == 1:
         return number
@@ -32,4 +33,4 @@ print("Pass" if (4 == sqrt(16)) else "Fail")
 print("Pass" if (1 == sqrt(1)) else "Fail")
 print("Pass" if (5 == sqrt(27)) else "Fail")
 
-sqrt(-9)
+print(sqrt(15241578750248846))  #123456789
