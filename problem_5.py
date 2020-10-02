@@ -44,7 +44,7 @@ class Trie:
         node = self.root
         for char in prefix:
             if char not in node.children:
-                return None
+                return TrieNode()
             node = node.children[char]
         return node
 
@@ -59,3 +59,15 @@ for word in wordList:
     MyTrie.insert(word)
 
 print(MyTrie.find('tr').suffixes())
+print(MyTrie.find('trght').suffixes())
+print(MyTrie.find('').suffixes())
+print(MyTrie.find('f').suffixes())
+
+MyTrie1 = Trie()
+wordList = []
+for word in wordList:
+    MyTrie1.insert(word)
+
+print(MyTrie1.find('tr').suffixes())
+print(MyTrie1.find('').suffixes())
+print(MyTrie1.find('f').suffixes())
