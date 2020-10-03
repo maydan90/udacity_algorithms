@@ -1,4 +1,16 @@
 Complexity of this algorithm consists of two parts: adding words and finding suffixes. 
-Time complexity: adding - O(n*k) where n is the number of paths to add, k - average length of each path (separation by slashes).
-find - O(k)
-Space complexity: O(n*k) worst case that all parts in paths are different.
+Time complexity:
+RouteTrieNode.insert - O(1)
+RouteTrie.insert - O(k) k - number of parts in path
+RouteTrie.find - O(k)
+Router.add_handler - O(k) based on RouteTrie.insert.
+Router.lookup - O(k) based on RouteTrie.find.
+
+Space complexity:
+RouteTrieNode.insert - O(1)
+RouteTrie.insert - O(k) k - number of parts in path
+RouteTrie.find - O(1)
+Router.add_handler - O(k) based on RouteTrie.insert.
+Router.lookup - O(1) based on RouteTrie.find.
+
+Total space needed to store all paths is O(n*k) - worst case, where n - number of paths to add. On practice much less space is required since a lot of paths share the same prefixes.

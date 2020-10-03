@@ -1,26 +1,11 @@
-def merge(arr1, arr2):
-    idx1, idx2 = 0, 0
-    output = []
-
-    while idx1 < len(arr1) and idx2 < len(arr2):
-        if arr1[idx1] >= arr2[idx2]:
-            output.append(arr1[idx1])
-            idx1 += 1
-        else:
-            output.append(arr2[idx2])
-            idx2 += 1
-
-    output.extend(arr1[idx1:])
-    output.extend(arr2[idx2:])
-    return output
+from collections import defaultdict
 
 
-def reversed_merge_sort(arr):
-    if len(arr) <= 1:
-        return arr
-
-    middle_index = len(arr) // 2
-    return merge(reversed_merge_sort(arr[:middle_index]), reversed_merge_sort(arr[middle_index:]))
+def number_frequency(arr):
+    frequencies = defaultdict(int)
+    for number in arr:
+        frequencies[number] += 1
+    return frequencies
 
 
 def rearrange_digits(input_list):
@@ -32,13 +17,26 @@ def rearrange_digits(input_list):
     Returns:
        (int),(int): Two maximum sums
     """
-    sorted_list = reversed_merge_sort(input_list)
+    frequencies = number_frequency(input_list)
     first_number, second_number = '', ''
-    for idx, element in enumerate(sorted_list):
-        if idx % 2 == 0:
-            first_number += str(element)
-        else:
-            second_number += str(element)
+
+    for digit in range(9, -1, -1):
+        if digit in frequencies:
+            frequency = frequencies[digit]
+            frequency_split = frequency//2
+            common_add = str(digit)*frequency_split
+            first_number += common_add
+            second_number += common_add
+            if frequency % 2 == 1:
+                if len(first_number) > len(second_number):
+                    second_number += str(digit)
+                else:
+                    first_number += str(digit)
+
+    if first_number == '':
+        first_number = '0'
+    if second_number == '':
+        second_number = '0'
     return int(first_number), int(second_number)
 
 
@@ -53,3 +51,10 @@ def test_function(test_case):
 
 test_function([[1, 2, 3, 4, 5], [542, 31]])
 test_function([[4, 6, 2, 5, 9, 8], [964, 852]])
+
+test_function([[7, 7, 7, 9, 8], [987, 77]])
+
+test_function([[1]*21, [11111111111, 1111111111]])
+
+test_function([[], [0, 0]])
+test_function([[7], [0, 7]])

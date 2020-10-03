@@ -33,4 +33,7 @@ print("Pass" if (4 == sqrt(16)) else "Fail")
 print("Pass" if (1 == sqrt(1)) else "Fail")
 print("Pass" if (5 == sqrt(27)) else "Fail")
 
-print(sqrt(15241578750248846))  #123456789
+print(sqrt(15241578750248846))  # 123456789
+
+print(sqrt(-100))  # None
+print(sqrt('1245'))  # None

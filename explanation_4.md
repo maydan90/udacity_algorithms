@@ -1,3 +1,3 @@
-List is sorted in one traversal. 
+Two pointers were used: last_zero_idx before which zero elements are stored and first_two_idx after which all element equal two are stored. If element equals 0 or 2, it is swapped with the element at the corresponding pointer location. The 1 elements will be in between two pointers automatically when the loop terminates. The sorting was performed in-place. As a result, the list is sorted in one traversal. 
 Time complexity: O(n) where n is the length of the input list. 
 Space complexity: O(1) no extra space needed.
