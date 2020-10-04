@@ -1,9 +1,9 @@
 Complexity of this algorithm consists of two parts: adding words and finding suffixes. 
 Time complexity:
 TrieNode.insert - O(1)
-TrieNode.suffixes - O(n) n - number of words added to the Trie
+TrieNode.suffixes - O(b^m) m - depth of the Trie (comparable with the average word length - k), b - average branching factor
 Trie.insert - O(k) k - length of word to add.
-Trie.find - O(k)
+Trie.find - O(b*m) m - prefix length (assuming dictionary lookup time complexity of O(n), b - average branching factor
 
 Space complexity:
 TrieNode.insert - O(1)
